@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Все"
+        android:icon="@drawable/ic_home"
+        android:id="@+id/bottomNavigation_menu_home"/>
+    <item android:title="Популярные"
+        android:icon="@drawable/ic_star"
+        android:id="@+id/bottomNavigation_menu_popular"/>
+    <item android:title="Акционные"
+        android:icon="@drawable/ic_auction"
+        android:id="@+id/bottomNavigation_menu_auction"/>
+    <item android:title="Каталог"
+        android:icon="@drawable/ic_list"
+        android:id="@+id/bottomNavigation_menu_catalog"/>
+
+</menu>

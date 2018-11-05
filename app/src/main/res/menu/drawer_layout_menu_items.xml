@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Клиенты"
+        android:icon="@drawable/ic_client"
+        android:id="@+id/drawerLayout_menu_client"/>
+    <item android:title="Поставщики"
+        android:icon="@drawable/ic_dealer"
+        android:id="@+id/drawerLayout_menu_dealer"/>
+    <item android:title="Условия и Положения"
+        android:icon="@drawable/ic_term"
+        android:id="@+id/drawerLayout_menu_term"/>
+    <item android:title="О нас"
+        android:icon="@drawable/ic_about"
+        android:id="@+id/drawerLayout_menu_about"/>
+    <item android:title="Выйти"
+        android:icon="@drawable/ic_exit"
+        android:id="@+id/drawerLayout_menu_log_out"/>
+
+</menu>
