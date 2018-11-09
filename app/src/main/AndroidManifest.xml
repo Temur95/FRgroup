@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Open">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Open">
             <intent-filter>
-                <action android:name="com.ulugbek.frgroup.MAINACTIVITY" />
+                <action android:name="com.ulugbek.frgroup.OPEN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
