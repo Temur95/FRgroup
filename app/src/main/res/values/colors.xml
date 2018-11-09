@@ -6,4 +6,8 @@
     <color name="white">#ffffff</color>
     <color name="lightGrey">#dcdcdc</color>
     <color name="DarkGrey">#939090</color>
+    <color name="hint">#998b8a8a</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="iconBlue">#164294</color>
+    <color name="iconYellow">#fdc109</color>
 </resources>
