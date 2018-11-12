@@ -102,15 +102,15 @@ public class MainActivity extends AppCompatActivity{
 
             }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frameLayout,selectFragment).commit();
-                    //close Drawer when menu item tapped
-                    mDrawerLayout.closeDrawers();
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frameLayout,selectFragment).commit();
+            //close Drawer when menu item tapped
+            mDrawerLayout.closeDrawers();
             return true;
 
         }
     };
 
-        //BOttomNavigationViewListener
+    //BOttomNavigationViewListener
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
