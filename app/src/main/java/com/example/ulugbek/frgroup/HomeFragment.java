@@ -2,8 +2,6 @@ package com.example.ulugbek.frgroup;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.animation.DynamicAnimation;
-import android.support.animation.FlingAnimation;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -51,13 +49,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         //CarouselImageView declaring
         CarouselView carouselView = rootView.findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
-        carouselView.setImageListener(imageListener);
-
-        FlingAnimation fling = new FlingAnimation(recyclerView,DynamicAnimation.SCALE_Y);
-                fling.setStartVelocity(-2000)
-                .setMinValue(-200).setMaxValue(2000)
-                .setFriction(1.1f)
-                .start();
 
 
         mDrawerLayout = rootView.findViewById(R.id.drawerLayout);
