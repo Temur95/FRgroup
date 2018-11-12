@@ -65,40 +65,7 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-        SharedPreferences sPref = getPreferences(MODE_PRIVATE);
-        String username = sPref.getString("username","");
-        if(username.equals("fr")){
-            Intent move = new Intent("com.ulugbek.frgroup.MAINACTIVITY");
-            startActivity(move);
-            finish();
-        }
-        reg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                   Intent move = new Intent("com.ulugbek.frgroup.REGISTER");
-                startActivity(move);
-            }
-        });
-        log.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if(Login.this.username.getText().toString().equals(login) && password.getText().toString().equals(pass)) {
-                    SharedPreferences sPref = getPreferences(MODE_PRIVATE);
-                    SharedPreferences.Editor ed = sPref.edit();
-                    ed.putString("username", Login.this.username.getText().toString());
-                    ed.commit();
-                    Intent move = new Intent("com.ulugbek.frgroup.MAINACTIVITY");
-                    startActivity(move);
-                    finish();
 
-                }
-                else
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),
-                            "Error", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        });
 
 
     }
