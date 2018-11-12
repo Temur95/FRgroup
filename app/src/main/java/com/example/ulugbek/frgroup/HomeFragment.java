@@ -91,7 +91,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         mTitles.add("7TH");
         mSubtitles.add("7th");
 
-        mImageUri.add("https://pbs.twimg.com/profile_images/692038602088280064/xS4CV9Sc_400x400.jpg");
+        mImageUri.add("https://goo.gl/images/WvBkwY");
         mTitles.add("8TH");
         mSubtitles.add("8th");
 

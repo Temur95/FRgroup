@@ -42,7 +42,7 @@
 
                     <RadioButton
                         android:textColor="@color/iconBlue"
-                        android:id="@+id/agree_radio"
+                        android:id="@+id/seller__radio"
                         android:textSize="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
 
                     <RadioButton
                         android:textColor="@color/iconBlue"
-                        android:id="@+id/disagree_radio"
+                        android:id="@+id/customer_radio"
                         android:text="Customer"
                         android:textStyle="bold"
                         android:textSize="18dp"
@@ -133,7 +133,7 @@
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/hint" />
             <Button
-                android:id="@+id/btn"
+                android:id="@+id/register_button"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="300dp"

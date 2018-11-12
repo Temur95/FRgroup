@@ -34,16 +34,16 @@ public class Open extends AppCompatActivity {
         Thread timer = new Thread() {
             public void run(){
                 try{
-                    sleep(4000);
+                    sleep(1500);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    SharedPreferences sPref = getPreferences(MODE_PRIVATE);
+                    SharedPreferences sPref = getSharedPreferences("login", MODE_PRIVATE);
                     String username = sPref.getString("username","");
+                    String password = sPref.getString("password","");
+                    if(username.equals("fr") && password.equals("fr") ){
 
-                    if(username.equals("fr")){
-
-                        Intent openStartingPoint = new Intent(".MainActivity");
+                        Intent openStartingPoint = new Intent("com.ulugbek.frgroup.MAINACTIVITY");
                         startActivity(openStartingPoint);
                     }
                     else{

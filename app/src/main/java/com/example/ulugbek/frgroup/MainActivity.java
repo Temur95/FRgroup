@@ -1,17 +1,24 @@
 package com.example.ulugbek.frgroup;
 
+import android.content.ClipData;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     DrawerLayout mDrawerLayout;
 
@@ -22,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //BOttomNavigationViewListener
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationView);
@@ -58,9 +66,15 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            case R.id.logout:
+                confirmExit();
+                break;
+
         }
         return true;
     }
+
+
 
 
     //NagivationDrawerListener
@@ -85,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.drawerLayout_menu_about:
                     selectFragment = new AboutFragment();
                     break;
+
             }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frameLayout,selectFragment).commit();
@@ -122,6 +137,39 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    public void confirmExit(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Spiders");
+        builder.setMessage("Do you want to log out?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences my = getSharedPreferences("login",MODE_PRIVATE);
+                        my.edit().remove("username").commit();
+                        my.edit().remove("password").commit();
+
+                        Intent intent = new Intent(MainActivity.this, Login.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 
 }

@@ -33,26 +33,21 @@ public class Login extends AppCompatActivity {
         log = (Button) findViewById(R.id.btn);
         reg = (TextView) findViewById(R.id.regTxt);
 
-        SharedPreferences sPref = getPreferences(MODE_PRIVATE);
-        String username = sPref.getString("username","");
-        if(username.equals("fr")){
-            Intent move = new Intent("com.ulugbek.frgroup.MAINACTIVITY");
-            startActivity(move);
-            finish();
-        }
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent move = new Intent("com.ulugbek.frgroup.REGISTER");
                 startActivity(move);
+                finish();
             }
         });
         log.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if(t1.getText().toString().equals(login) && t2.getText().toString().equals(pass)) {
-                    SharedPreferences sPref = getPreferences(MODE_PRIVATE);
+                    SharedPreferences sPref = getSharedPreferences("login",MODE_PRIVATE);
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString("username", t1.getText().toString());
+                    ed.putString("password", t2.getText().toString());
                     ed.commit();
                     Intent move = new Intent("com.ulugbek.frgroup.MAINACTIVITY");
                     startActivity(move);
@@ -70,7 +65,6 @@ public class Login extends AppCompatActivity {
 
 
     }
-
 
 
 
