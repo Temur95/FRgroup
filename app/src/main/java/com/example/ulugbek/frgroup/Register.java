@@ -33,19 +33,14 @@ public class Register extends AppCompatActivity {
         init();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
+
             @Override
             public void onClick(View view) {
-                if(edit_repassword.getText().toString().equals(edit_password.getText().toString())) {
                     role = "";
                     username = edit_username.getText().toString();
                     email = edit_email.getText().toString();
                     password = edit_password.getText().toString();
-                }
-                else{
-                    edit_repassword.setTextColor(R.color.Red);
-                    edit_password.setTextColor(R.color.Red);
-                }
+
             }
         });
 

@@ -46,4 +46,8 @@ dependencies {
 
     //implementation PICASSO
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Implementation ANIMATION
+    implementation 'com.android.support:support-dynamic-animation:27.0.0'
+
 }

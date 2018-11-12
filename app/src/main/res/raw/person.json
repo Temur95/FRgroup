@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Temur Musurmanov",
+    "email": "timurm756@gmail.com",
+    "username": "fr",
+    "password": "fr",
+    "role": "client"
+  },
+  {
+    "name": "Temur Musurmanov",
+    "email": "timurm756@gmail.com",
+    "username": "go",
+    "password": "go",
+    "role": "client"
+  },
+  {
+    "name": "Temur Musurmanov",
+    "email": "timurm756@gmail.com",
+    "username": "do",
+    "password": "do",
+    "role": "client"
+  }
+]
