@@ -1,9 +1,8 @@
 package com.example.ulugbek.frgroup;
 
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -12,11 +11,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -108,7 +105,7 @@ public class MainActivity extends AppCompatActivity{
                     break;
 
             }
-
+ 
             getSupportFragmentManager().beginTransaction().replace(R.id.main_frameLayout,selectFragment).commit();
             //close Drawer when menu item tapped
             mDrawerLayout.closeDrawers();
