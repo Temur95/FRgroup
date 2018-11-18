@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity{
 
     DrawerLayout mDrawerLayout;
@@ -99,6 +101,11 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.drawerLayout_menu_about:
                     selectFragment = new AboutFragment();
                     break;
+                case R.id.drawerLayout_menu_log_out:
+//                        Intent i = new Intent(MainActivity.this,Login.class);
+//                        startActivity(i);
+//                        finish();
+                    break;
 
             }
 
@@ -152,9 +159,11 @@ public class MainActivity extends AppCompatActivity{
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SharedPreferences my = getSharedPreferences("login",MODE_PRIVATE);
-                        my.edit().remove("username").commit();
-                        my.edit().remove("password").commit();
+//                        SharedPreferences my = getSharedPreferences("login",MODE_PRIVATE);
+//                        my.edit().remove("username").commit();
+//                        my.edit().remove("password").commit();
+
+                        FirebaseAuth.getInstance().signOut();
 
                         Intent intent = new Intent(MainActivity.this, Login.class);
                         startActivity(intent);
