@@ -62,6 +62,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
 
                 startSignIn();
+
             }
         });
 
@@ -168,15 +169,22 @@ public class Login extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     mProgressDialog.setMessage("Loading...");
                     mProgressDialog.show();
+
                     if(!task.isSuccessful()){
                         Toast.makeText(Login.this,"Sign in Problem",Toast.LENGTH_SHORT).show();
+
+                        mProgressDialog.dismiss();
                     }
 
-                    mProgressDialog.dismiss();
+
 
                 }
             });
+
+            mProgressDialog.dismiss();
         }
+
+
 
     }
 
