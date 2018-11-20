@@ -1,12 +1,20 @@
 package com.example.ulugbek.frgroup;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +32,7 @@ public class Login extends AppCompatActivity {
     String pass, login;
     TextView reg;
 
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -32,6 +41,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        checkConnection();
         login = "fr";
         pass = "fr";
 
@@ -56,8 +67,13 @@ public class Login extends AppCompatActivity {
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startSignIn();
+                if(isOnline()){
+                    startSignIn();
+                }
+                 else{
+                    Intent noConnect = new Intent(Login.this, NoConnection.class);
+                    startActivity(noConnect);
+                }
             }
         });
 
@@ -138,6 +154,26 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void checkConnection(){
+        if(isOnline()){
+            Toast.makeText(Login.this, "You are connected to Internet", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(Login.this, "You are not connected to Internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     @Override
     protected void onStart() {
