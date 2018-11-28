@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity{
             case R.id.logout:
                 confirmExit();
                 break;
+            case R.id.myAccount:
+
+                Intent intent = new Intent(this,MyAccount.class);
+                startActivity(intent);
+                finish();
+                break;
 
         }
         return true;
