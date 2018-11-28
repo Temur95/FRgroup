@@ -48,32 +48,41 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
+        edit_username = findViewById(R.id.name);
+        edit_email = findViewById(R.id.email);
+        edit_password = findViewById(R.id.pass);
+        edit_repassword = findViewById(R.id.repass);
+        radio_role = findViewById(R.id.radioGroup);
+        radio_customer = findViewById(R.id.customer_radio);
+        radio_seller = findViewById(R.id.seller__radio);
+        registerBtn = findViewById(R.id.register_button);
+
+
+
         mDialog = new ProgressDialog(this);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Userlar");
 
         mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
 
-
-            }
-        };
-
-
-        init();
         registerBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                    role = "";
-                    username = edit_username.getText().toString();
-                    email = edit_email.getText().toString();
-                    password = edit_password.getText().toString();
-
+                startRegister();
             }
         });
+
+//        registerBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                    role = "";
+//                    username = edit_username.getText().toString();
+//                    email = edit_email.getText().toString();
+//                    password = edit_password.getText().toString();
+//
+//            }
+//        });
 
     }
 
@@ -85,23 +94,12 @@ public class Register extends AppCompatActivity {
         startActivity(go);
     }
 
-    public void init(){
-        edit_username = findViewById(R.id.name);
-        edit_email = findViewById(R.id.email);
-        edit_password = findViewById(R.id.pass);
-        edit_repassword = findViewById(R.id.repass);
-        radio_role = findViewById(R.id.radioGroup);
-        radio_customer = findViewById(R.id.customer_radio);
-        radio_seller = findViewById(R.id.seller__radio);
-        registerBtn = findViewById(R.id.register_button);
-
-    }
 
     private void startRegister(){
 
         final String username = edit_username.getText().toString().trim();
-        String email = edit_email.getText().toString().trim();
-        String password = edit_password.getText().toString().trim();
+        final String email = edit_email.getText().toString().trim();
+        final String password = edit_password.getText().toString().trim();
         String rePassword = edit_repassword.getText().toString().trim();
 
         if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(rePassword)){
@@ -109,18 +107,17 @@ public class Register extends AppCompatActivity {
             mDialog.setMessage("Signing Up....");
             mDialog.show();
 
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){
 
-
-
-
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = mDatabaseRef.child(user_id);
                             current_user_db.child("name").setValue(username);
+                            current_user_db.child("email").setValue(email);
+                            current_user_db.child("password").setValue(password);
 
                             mDialog.dismiss();
 
